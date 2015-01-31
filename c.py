@@ -45,7 +45,15 @@ while wl<=700.0:
     lsmall=RArray[j][0]; Rsmall=RArray[j][1]
     Ref=(wl*nm-lsmall)/(lbig-lsmall)*(Rbig-Rsmall)+Rsmall
 
-    sunC=1.0/2555.0*12*math.exp(-1*(wl-530)*(wl-530)/14426)
+    if wl<400:
+        sunC=0.4
+    elif wl>=400 and wl<450:
+        sunC=0.7
+    elif wl>=450 and wl<600:
+        sunC=0.8
+    else:
+        sunC=0.7
+
 
     Z=Z + 1.8*math.exp(-1*(wl-450)*(wl-450)/873)*Ref*dwl*sunC
     Y=Y + 1.0*math.exp(-1*(wl-560)*(wl-560)/3517)*Ref*dwl*sunC
